@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>  
+<script src="collab-data.js"></script>
+<script src="packages.js"></script>
+<script src="resnet-collaborations.js"></script>
+<style>
+
+h1{
+	font-family: Verdana, Arial
+}
+path {
+  cursor: move;
+  fill: #fff;
+  opacity:1 !important;
+  fill-opacity:0;
+}
+#year{
+	font-size:large;
+}
+.link.source, .link.target {
+  stroke-opacity: 1 !important;
+  stroke:green !important;
+  stroke-width: 3 !important;
+}
+
+.node.target {
+  fill: #2ba430 !important;
+}
+
+.notsource{
+  opacity:0.5 !important;
+}
+
+.node.source {
+  /*fill: #2ca02c;*/
+}
+
+.node:hover {
+  background:#ececec;
+  text-decoration: underline;
+}
+
+.node:hover,
+.node.source,
+.node.target {
+  font-weight: 700;
+  font-size:16px;
+  opacity: 1 !important;
+  fill: #2ba430 !important;
+}
+
+</style>
+</head>
+<body>
+<h1>ResNet Collaborations</h1>
+<svg>
+</svg>
+</body>
+</html>
