@@ -2,11 +2,17 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>  
 <script src="collab-data.js"></script>
 <script src="packages.js"></script>
 <script src="resnet-collaborations.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
+
+body{
+  max-width:1200px;
+}
 
 h1{
 	font-family: Verdana, Arial
@@ -52,10 +58,35 @@ path {
   fill: #2ba430 !important;
 }
 
+#slider-range{
+  width:100px;
+  float:left
+}
+#year-range{
+  width:180px;
+  float:left;
+  font-family:Verdana,Arial;
+}
+
+#legenddiv{
+  width:200px;
+  float:right;
+}
+
+#legenddiv li{
+  margin:4px;
+  padding:3px;
+  border-radius:4px;
+}
+
+
 </style>
 </head>
 <body>
 <h1>ResNet Collaborations</h1>
+<div id="year-range"></div>
+<div id="slider-range"></div>
+<div id="legenddiv"></div>
 <svg>
 </svg>
 </body>

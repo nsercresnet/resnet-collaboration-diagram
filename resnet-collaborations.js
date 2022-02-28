@@ -1,10 +1,23 @@
 
 $(document).ready(function(){
-	graph_edge(2016,2021);
+	graph_edge(2018,2021);
 	$('#year').change(function(){
 		$('svg').html('')
 		graph_edge($(this).val(),$(this).val());
 	});
+	$( "#slider-range" ).slider({
+		range: true,
+		min: 2018,
+		max: 2021,
+		values: [ 2018, 2021 ],
+		slide: function( event, ui ) {
+			$("svg").empty();
+			$("#legenddiv").empty();
+			graph_edge(ui.values[ 0 ],ui.values[ 1 ])
+			$('#year-range').html("Year range: "+ ui.values[0] + '-' + ui.values[ 1 ])
+		}
+	});
+	$('#year-range').html("Year range: 2018-2021")
 })
 
 function graph_edge(startyear,endyear) {
@@ -15,13 +28,22 @@ function graph_edge(startyear,endyear) {
 			rotate = 0;
 
 			/*var graph=JSON.parse(result);*/
-
+			let graph = {
+				...data
+			};
+			graph.links=data.links.filter(function(y){
+				return y.year>=startyear & y.year<=endyear
+			})
 			svg=undefined;
 			layout=undefined;
 
 			cluster = d3.layout.cluster()
 			.size([360, ry - 120])
-			.sort(function(a, b) { return d3.ascending(a.id, b.id); });
+			.sort(function(a, b) { return d3.ascending(a.id, b.id); })
+			.separation(function separation(a, b) {
+  				return a.parent == b.parent ? 1 : 1.25;
+			})
+
 			nodes = cluster.nodes(packages.root(graph.nodes));
 
 			d3.select("svg")
@@ -40,7 +62,6 @@ function graph_edge(startyear,endyear) {
 					"L1": '#764E9F',
 					"T2": '#A5AA99'
 			}
-			div = d3.select("#graph");
 			svg = d3.select("svg")
 			.attr('viewBox', null)
 			.attr('preserveAspectRatio', null)
@@ -51,17 +72,16 @@ function graph_edge(startyear,endyear) {
 			.style("padding-top", 0)
 			.style("padding-left", 0);
 
-				d3.select("#legenddiv").empty();
 
-				var legend = d3.select("#legenddiv").append("ul").attr('class','legendedge');
-				tr = legend.selectAll("li").data(Object.keys(color)).enter().append("li")
-				.style("background-color",function(d){
-					return color[d]
-				})
-				.text(function(d){ 
-					return d;
-				})
-				.style("color","white")
+			var legend = d3.select("#legenddiv").append("ul").attr('class','legendedge');
+			tr = legend.selectAll("li").data(Object.keys(color)).enter().append("li")
+			.style("background-color",function(d){
+				return color[d]
+			})
+			.text(function(d){ 
+				return d;
+			})
+			.style("color","white")
 
 			tr.on("mouseover", emouseover).on("mouseout", emouseout);
 
@@ -241,7 +261,7 @@ function graph_edge(startyear,endyear) {
 		.style("opacity", 1)
 
 		function emouseover(d){
-			graph.nodes.each(function(g){
+			graph.nodes.forEach(function(g){
 				if (g.group==d){
 					svg.selectAll("path.link.target-" + g.key)
 					.classed("target", true)
