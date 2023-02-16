@@ -1,9 +1,8 @@
-
-body{
+#body{
   max-width:1200px;
 }
 
-h1{
+#h1{
 	font-family: Verdana, Arial
 }
 path {
@@ -49,12 +48,14 @@ path {
 
 #slider-range{
   width:100px;
-  float:left
+  float:left;
+  margin-top:40px;
 }
 #year-range{
   width:180px;
   float:left;
   font-family:Verdana,Arial;
+  margin-top:30px;
 }
 
 #legenddiv{

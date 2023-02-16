@@ -1,17 +1,13 @@
 
 $(document).ready(function(){
 	graph_edge(2018,2022);
-	$('#year').change(function(){
-		$('svg').html('')
-		graph_edge($(this).val(),$(this).val());
-	});
 	$( "#slider-range" ).slider({
 		range: true,
 		min: 2018,
 		max: 2022,
 		values: [ 2018, 2022 ],
 		slide: function( event, ui ) {
-			$("svg").empty();
+			$("#collab").empty();
 			$("#legenddiv").empty();
 			graph_edge(ui.values[ 0 ],ui.values[ 1 ])
 			$('#year-range').html("Year range: "+ ui.values[0] + '-' + ui.values[ 1 ])
@@ -46,7 +42,7 @@ function graph_edge(startyear,endyear) {
 
 			nodes = cluster.nodes(packages.root(graph.nodes));
 
-			d3.select("svg")
+			d3.select("#collab")
 			.style("padding-top", 0)
 			.style("padding-left", 0);
 
@@ -62,7 +58,7 @@ function graph_edge(startyear,endyear) {
 					"L1": '#764E9F',
 					"T2": '#A5AA99'
 			}
-			svg = d3.select("svg")
+			svg = d3.select("#collab")
 			.attr('viewBox', null)
 			.attr('preserveAspectRatio', null)
 			.attr("width", w)
