@@ -1,0 +1,70 @@
+
+body{
+  max-width:1200px;
+}
+
+h1{
+	font-family: Verdana, Arial
+}
+path {
+  cursor: move;
+  fill: #fff;
+  opacity:1 !important;
+  fill-opacity:0;
+}
+#year{
+	font-size:large;
+}
+.link.source, .link.target {
+  stroke-opacity: 1 !important;
+  stroke:green !important;
+  stroke-width: 3 !important;
+}
+
+.node.target {
+  fill: #2ba430 !important;
+}
+
+.notsource{
+  opacity:0.5 !important;
+}
+
+.node.source {
+  /*fill: #2ca02c;*/
+}
+
+.node:hover {
+  background:#ececec;
+  text-decoration: underline;
+}
+
+.node:hover,
+.node.source,
+.node.target {
+  font-weight: 700;
+  font-size:16px;
+  opacity: 1 !important;
+  fill: #2ba430 !important;
+}
+
+#slider-range{
+  width:100px;
+  float:left
+}
+#year-range{
+  width:180px;
+  float:left;
+  font-family:Verdana,Arial;
+}
+
+#legenddiv{
+  width:200px;
+  float:right;
+}
+
+#legenddiv li{
+  margin:4px;
+  padding:3px;
+  border-radius:4px;
+}
+
