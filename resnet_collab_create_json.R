@@ -4,8 +4,12 @@ library(jsonlite)
 # nodes<-read.csv('data/ResNet pub matrix names.csv')
 # links<-read.csv('data/ResNet links18-21.csv')
 
-nodes<-read.csv('data/Publication matrix 2022 - members.csv')
-links<-read.csv('data/Publication matrix 2022 - links.csv')
+#nodes<-read.csv('data/Publication matrix 2022 - members.csv')
+#links<-read.csv('data/Publication matrix 2022 - links.csv')
+
+nodes<-read.csv('data/ResNet pub matrix names-2025.csv')
+links<-read.csv('data/ResNet links18-25.csv')
+
 
 nodes$id<-seq(1,nrow(nodes))
 links_names <- links |> left_join(nodes, by=c('member_id1'='member_id')) |> left_join(nodes, by=c('member_id2'='member_id')) |> select(source=id.x, target=id.y, year, value=number_of_papers)

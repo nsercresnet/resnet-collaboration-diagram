@@ -1,11 +1,11 @@
 
 $(document).ready(function(){
-	graph_edge(2018,2022);
+	graph_edge(2018,2025);
 	$( "#slider-range" ).slider({
 		range: true,
 		min: 2018,
-		max: 2022,
-		values: [ 2018, 2022 ],
+		max: 2025,
+		values: [ 2018, 2025 ],
 		slide: function( event, ui ) {
 			$("#collab").empty();
 			$("#legenddiv").empty();
@@ -13,7 +13,7 @@ $(document).ready(function(){
 			$('#year-range').html("Year range: "+ ui.values[0] + '-' + ui.values[ 1 ])
 		}
 	});
-	$('#year-range').html("Year range: 2018-2022")
+	$('#year-range').html("Year range: 2018-2025")
 })
 
 function graph_edge(startyear,endyear) {
